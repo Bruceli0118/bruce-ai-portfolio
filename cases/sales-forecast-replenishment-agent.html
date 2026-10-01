@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="销量预测与补货协同 Agent 的匿名产品方案案例。" />
+    <title>销量预测与补货协同 Agent | Bruce</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="case.css" />
+    <link rel="stylesheet" href="case-demo.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至正文</a>
+    <header class="site-header"><a class="brand" href="../index.html" aria-label="Bruce 首页">BRUCE<span>_</span></a><a class="header-cta" href="../index.html#projects">返回案例索引</a></header>
+    <main id="main" class="case-page">
+      <section class="case-hero">
+        <p class="eyebrow">ANONYMISED CASE / PRODUCT DESIGN</p>
+        <p class="case-type">跨境电商 · 供应链与预测</p>
+        <h1>销量预测与<br /><em>补货协同 Agent</em></h1>
+        <p class="lede">将销售预测、补货判断和业务解释拆分为可审阅的步骤，帮助团队从“看一个预测数字”转向“理解建议为什么成立”。</p>
+        <div class="case-facts"><span>证据等级：产品方案</span><span>模式：受控分析与建议</span><span>范围：预测 / 补货协同</span></div>
+      </section>
+
+      <section class="case-section case-grid"><div><p class="eyebrow">01 / BUSINESS CHALLENGE</p><h2>预测不是答案，<br />决策才是闭环。</h2></div><div class="case-copy"><p>业务团队面对销量波动、促销、价格、广告和季节性时，往往能得到预测结果，却难以判断预测依据、风险区间与补货动作之间的关系。</p><p>因此，产品的重点不是让模型替代采购决策，而是将预测、业务规则、异常校验和建议解释组合成可由业务人员复核的协同流程。</p></div></section>
+
+      <section class="case-section decision-table"><p class="eyebrow">02 / WORKFLOW DESIGN</p><div><strong>Router</strong><span>识别用户问题属于预测、归因、补货、情景模拟或报表请求。</span></div><div><strong>Planner</strong><span>根据任务类型选择受控步骤、所需数据和输出结构。</span></div><div><strong>Executor</strong><span>由预测服务、规则和计算模块产生结构化结果。</span></div><div><strong>Verifier</strong><span>校验数据完整性、口径与输出边界，防止未经验证的数字进入回答。</span></div><div><strong>Narrator</strong><span>将已校验事实转化为面向业务人员的解释、风险提示与后续建议。</span></div></section>
+
+      <section class="case-section"><p class="eyebrow">03 / PRODUCT APPROACH</p><div class="flow"><span>业务提问</span><b>→</b><span>任务路由</span><b>→</b><span>预测 / 规则计算</span><b>→</b><span>结果校验</span><b>→</b><span>解释与建议</span></div><div class="case-columns"><article><h3>预测区间</h3><p>以预测范围和前提条件呈现不确定性，避免把单点预测误读为确定承诺。</p></article><article><h3>归因与情景</h3><p>将趋势、季节性、促销、价格和广告等因素放入可解释的业务语境。</p></article><article><h3>补货协同</h3><p>以建议、风险提示和人工复核为主，不把自动下单设为默认能力。</p></article></div></section>
+
+      <section class="case-section case-grid role-section"><div><p class="eyebrow">04 / MY ROLE</p><h2>产品规划、<br />工作流与验证。</h2></div><div class="case-copy"><ul><li>拆解预测与补货业务中的用户问题、数据依赖、决策点与例外情况。</li><li>定义多阶段工作流、输入输出契约与模型、规则之间的责任边界。</li><li>设计面向业务人员的解释结构、异常提示和人工协作方式。</li><li>将验证重点放在口径一致性、任务路由、计算校验和建议可理解性。</li></ul></div></section>
+
+      <section class="case-section boundary"><p class="eyebrow">05 / BOUNDARY & EVIDENCE</p><h2>产品方案不是<br />生产承诺。</h2><p>本案例以匿名化产品与工作流设计说明能力范围，不披露客户、订单、库存、模型参数或实际补货结果。接入真实业务前，需要根据组织权限、库存策略、供应商约束和业务验收标准完成受控验证。</p></section>
+      <section class="case-section case-demo" id="product-preview" aria-labelledby="preview-title">
+        <div class="case-demo-intro"><p class="eyebrow">POC / PRODUCT PREVIEW</p><h2 id="preview-title">看见趋势，<br />理解建议的边界。</h2><p>基于桌面销量预测 App 的原始样式与分栏布局制作的演示页面截图，文字与曲线使用独立模拟内容。用于说明产品交互思路，不是 App 实际运行输出或真实经营预测。</p></div>
+        <figure><img src="../assets/cases/forecast-demo-v1.png" width="1280" height="720" loading="lazy" alt="销量预测演示页面：左侧为示例业务问题与解释，右侧为模拟趋势与预测区间" /><figcaption>POC Demo · 原 App 样式 / 模拟内容 · 静态预览</figcaption></figure>
+      </section>
+      <section class="case-section case-demo" id="replenishment-preview" aria-labelledby="replenishment-title">
+        <div class="case-demo-intro"><p class="eyebrow">POC / ISOLATED RUNTIME</p><h2 id="replenishment-title">从补货建议，<br />回到决策依据。</h2><p>原补货 Agent 页面在隔离环境中运行，使用固定种子生成的合成 SKU、库存与采购数据，外部系统集成全部关闭。画面中的金额和比例仅用于验证交互与计算链路，不代表客户数据、实际节省或生产效果。</p><a href="../assets/cases/replenishment-dashboard-v1.png" target="_blank" rel="noopener">查看原尺寸截图（新窗口） ↗</a></div>
+        <figure><img src="../assets/cases/replenishment-dashboard-v1.png" width="1440" height="705" loading="lazy" alt="智能补货与库存决策 Agent 隔离演示：合成数据指标、现金归因瀑布与多源采购分布" /><figcaption>原页面截图 · 隔离运行 / 合成数据 · 非真实经营成果</figcaption></figure>
+      </section>
+    </main>
+    <footer><span>BRUCE / ENTERPRISE AI</span><a href="../index.html#contact">合作交流</a></footer>
+  </body>
+</html>
