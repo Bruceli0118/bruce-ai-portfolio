@@ -57,14 +57,16 @@
     $('cash-rows').innerHTML = r.rows.map(row => `<tr><td>${row.date}</td><td>${money(row.baseline_cents)}</td><td>${money(row.candidate_cents)}</td><td>${row.candidate_cents < r.floor_cents ? '是' : '否'}</td></tr>`).join('');
     renderChart(r);
     $('export-result').disabled = false;
+    document.dispatchEvent(new CustomEvent('portal-result', {detail:r}));
   }
   $('cash-form').addEventListener('submit', ev => {
     ev.preventDefault(); $('cash-error').textContent = ''; $('export-status').textContent = '';
     try { result = calculate($('extra').value,$('floor').value); render(); $('cash-result').focus(); }
-    catch (error) { result = null; $('cash-result').textContent = ''; $('cash-rows').replaceChildren(); $('balance-chart').replaceChildren(); $('export-result').disabled = true; $('cash-error').textContent = error.message; }
+    catch (error) { result = null; document.dispatchEvent(new CustomEvent('portal-result', {detail:null})); $('cash-result').textContent = ''; $('cash-rows').replaceChildren(); $('balance-chart').replaceChildren(); $('export-result').disabled = true; $('cash-error').textContent = error.message; }
   });
   for (const id of ['extra','floor']) $(id).addEventListener('input', () => {
     result = null; $('export-result').disabled = true;
+    document.dispatchEvent(new CustomEvent('portal-result', {detail:null}));
     $('cash-result').textContent = '参数已变化，请重新计算。';
     $('cash-rows').replaceChildren(); $('balance-chart').replaceChildren(); $('export-status').textContent = '';
   });
@@ -83,19 +85,6 @@
     download('bruce-business-analysis-card.json',{scope:'public_demo_analysis_card',...data,business_approval:false});
     $('plan-status').textContent = '已发起分析卡下载，可用于人工交接。';
   });
-  const nodes = {
-    task:['业务任务','定义费用假设、比较目标与人工责任；业务目标决定分析范围。'],
-    data:['合成数据','独立构造14天流入与流出，用于公开体验。没有交易明细与真实账户关联。'],
-    tool:['计算工具','按整数分计算余额，每日额外费用累积扣减。不重新预测销量或现金流。'],
-    check:['数字核验','检查基准收支、方案收支与累计费用差额的一致性。通过不代表业务批准。'],
-    review:['人工复核','复核输入、假设、结果与责任。网页不认证复核人，也不执行付款。'],
-    evidence:['分析记录','导出的JSON包含假设、逐日结果和核验状态；仅是演示记录，不是生产审计凭证。'],
-  };
-  document.querySelectorAll('[data-node]').forEach(b => b.addEventListener('click', () => {
-    const [title,body] = nodes[b.dataset.node]; $('node-detail').replaceChildren();
-    const h = document.createElement('h4'), p = document.createElement('p');h.textContent = title;p.textContent = body;$('node-detail').append(h,p);
-    document.querySelectorAll('[data-node]').forEach(n => n.setAttribute('aria-pressed',String(n === b)));
-  }));
   const steps = [
     ['cash','查看数据来源和日期，输入每日额外费用与分析底线，点击“计算并核验”。'],
     ['cash','比较最低余额、期末余额和低于底线天数。填写复核说明，再导出本次分析。'],
