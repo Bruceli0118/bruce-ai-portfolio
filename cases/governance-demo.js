@@ -48,14 +48,43 @@
   const $ = id => document.getElementById(id);
   let result = null, condition = 'matched', selected = 'task';
   function element(tag,text,className) { const el = document.createElement(tag); if(text) el.textContent=text;if(className) el.className=className;return el; }
+  const svgNS='http://www.w3.org/2000/svg', colors={'场景':'#65b8ff','数据':'#a38bfa','工具':'#66dfd1','规则':'#fa8aa1','审阅':'#efc670','证据':'#9cc8d1'};
+  const positions={}, mapNodes=new Map(), mapEdges=[];
+  function svgElement(tag,attrs={}) {const e=document.createElementNS(svgNS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));return e;}
+  function chooseNode(id) {selected=id;displayNodes();detail();}
+  function initMap() {
+    const categories=Object.keys(colors);
+    categories.forEach((type,ci)=>{
+      const angle=-Math.PI/2+ci*Math.PI/3,cx=480+280*Math.cos(angle),cy=280+180*Math.sin(angle);
+      const label=svgElement('text',{x:cx,y:cy-58,'text-anchor':'middle',fill:colors[type],'font-size':17});label.textContent=type;$('gov-map').append(label);
+      const members=nodes.filter(n=>n.type===type);
+      members.forEach((n,i)=>{positions[n.id]={x:cx+(i-(members.length-1)/2)*43,y:cy+(i%2)*32};});
+    });
+    const edgeLayer=svgElement('g',{'aria-hidden':'true'});$('gov-map').append(edgeLayer);
+    edges.forEach(e=>{const from=positions[e.from],to=positions[e.to],line=svgElement('line',{x1:from.x,y1:from.y,x2:to.x,y2:to.y,stroke:'#375768','stroke-width':1.3});edgeLayer.append(line);mapEdges.push({edge:e,line});});
+    nodes.forEach(n=>{
+      const p=positions[n.id],g=svgElement('g',{transform:`translate(${p.x} ${p.y})`,tabindex:0,role:'button','aria-label':`${n.type}：${n.name}`,'data-map-node':n.id});
+      const title=svgElement('title');title.textContent=`${n.name} · ${n.version}`;
+      const ring=svgElement('circle',{r:21,fill:'none',stroke:colors[n.type],'stroke-width':1,class:'gov-node-ring'});
+      const circle=svgElement('circle',{r:11,fill:colors[n.type]});
+      const text=svgElement('text',{x:0,y:39,'text-anchor':'middle',fill:'#ebf5fb','font-size':13,class:'gov-node-name'});text.textContent=n.name;
+      g.append(title,ring,circle,text);g.addEventListener('click',()=>chooseNode(n.id));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();chooseNode(n.id);}});$('gov-map').append(g);mapNodes.set(n.id,g);
+    });
+  }
+  function updateMap(visible) {
+    const ids=new Set(visible.map(n=>n.id));
+    mapNodes.forEach((g,id)=>{g.classList.toggle('map-filtered',!ids.has(id));g.classList.toggle('map-selected',id===selected);g.setAttribute('aria-pressed',String(id===selected));g.setAttribute('tabindex',ids.has(id)?'0':'-1');});
+    mapEdges.forEach(({edge,line})=>{line.classList.toggle('map-filtered',!ids.has(edge.from)||!ids.has(edge.to));line.classList.toggle('map-active',edge.from===selected||edge.to===selected);});
+  }
   function displayNodes() {
     const query = $('gov-search').value.trim().toLowerCase(), type = $('gov-type').value, mode = $('gov-view').value;
     const connected = new Set([selected,...edges.filter(e=>e.from===selected||e.to===selected).flatMap(e=>[e.from,e.to])]);
     const visible = nodes.filter(n => (mode!=='focus'||connected.has(n.id)) && (!type||n.type===type) && `${n.name} ${n.type} ${n.id}`.toLowerCase().includes(query));
+    updateMap(visible);
     $('gov-nodes').replaceChildren();
     for(const category of [...new Set(visible.map(n=>n.type))]) {
       const group=element('section',null,'gov-group');group.append(element('h4',category));
-      visible.filter(n=>n.type===category).forEach(n=>{const b=element('button',n.name);b.type='button';b.dataset.node=n.id;b.setAttribute('aria-pressed',String(n.id===selected));b.addEventListener('click',()=>{selected=n.id;displayNodes();detail();});group.append(b);});
+      visible.filter(n=>n.type===category).forEach(n=>{const b=element('button',n.name);b.type='button';b.dataset.node=n.id;b.setAttribute('aria-pressed',String(n.id===selected));b.addEventListener('click',()=>{chooseNode(n.id);$('gov-nodes').querySelector(`[data-node="${n.id}"]`)?.focus({preventScroll:true});});group.append(b);});
       $('gov-nodes').append(group);
     }
     $('gov-count').textContent=`当前显示 ${visible.length} / ${nodes.length} 个演示实体 · 总计 ${edges.length} 条定义关系`;
@@ -121,5 +150,13 @@
     setCondition(b.dataset.condition);
   }));
   document.addEventListener('portal-result',ev=>{result=ev.detail;refresh();});
+  let paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function motionState() {$('gov-map').classList.toggle('motion-paused',paused);$('gov-toggle-motion').textContent=paused?'播放动画':'暂停动画';$('gov-toggle-motion').setAttribute('aria-pressed',String(paused));}
+  $('gov-toggle-motion').addEventListener('click',()=>{paused=!paused;motionState();});
+  $('gov-map-wrap').hidden=window.matchMedia('(max-width: 800px)').matches;
+  function mapVisibility() {const hidden=$('gov-map-wrap').hidden;$('gov-toggle-map').textContent=hidden?'显示动态图':'隐藏动态图';$('gov-toggle-map').setAttribute('aria-pressed',String(!hidden));}
+  $('gov-toggle-map').addEventListener('click',()=>{$('gov-map-wrap').hidden=!$('gov-map-wrap').hidden;mapVisibility();});
+  // Animation is CSS-only; no timer, network request or physics dependency.
+  initMap();motionState();mapVisibility();
   displayNodes();refresh();
 })();
