@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="hero-refresh.css" />
     <link rel="stylesheet" href="hero-cutout.css" />
     <link rel="stylesheet" href="language.css" />
+    <link rel="stylesheet" href="evidence-refresh.css" />
+    <script src="evidence-ui.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">跳至正文</a>
@@ -55,40 +57,56 @@
         <div class="hero-copy">
           <p class="eyebrow">ENTERPRISE AI / FIELD DELIVERY / PRODUCT</p>
           <h1 id="hero-title">把企业 AI<br /><em>推进到<br />业务闭环。</em></h1>
-          <p class="lede">Enterprise AI · FDE · AI Product Manager。连接经营、财务、ERP 与数据团队，将 AI 场景从业务诊断、产品设计推进至 POC 验证和规模化运营。</p>
+          <p class="hero-focus">聚焦 AI 财务、经营分析与流程智能化。</p>
+          <p class="lede">企业 AI 产品经理 / FDE。结合财务、ERP 与数字化交付经验，开展企业 AI 场景规划、产品设计与 POC 验证。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">查看匿名案例</a>
-            <a class="text-link" href="#contact">合作交流 <span aria-hidden="true">↘</span></a>
+            <a class="button primary" href="#projects">查看项目案例</a>
+            <a class="text-link" href="#profile">查看专业履历 <span aria-hidden="true">↘</span></a>
           </div>
         </div>
         <figure class="hero-portrait">
           <img src="assets/profile/bruce-portrait-cutout-v1.png" alt="Bruce 的职业肖像" />
           <figcaption>BUSINESS × AI × DELIVERY</figcaption>
         </figure>
-      </section>
-
-      <section class="section profile" id="profile" aria-labelledby="profile-title">
-        <div class="section-intro profile-intro">
-          <div><p class="eyebrow">PROFILE</p><h2 id="profile-title">把企业经验，<br />转化为可运营的 AI 能力。</h2></div>
-          <p>企业 AI 产品经理 / FDE，连接管理层、业务团队与技术团队，让 AI 从场景判断走向受控交付。</p>
-        </div>
         <div class="profile-proof" aria-label="经验概览">
           <div><strong>20+ 年</strong><span>企业管理与数字化实践</span></div>
           <div><strong>100+ 项目</strong><span>信息化与数字化项目经验</span></div>
           <div><strong>AI × ERP × Finance</strong><span>聚焦企业经营智能化</span></div>
         </div>
-        <div class="profile-story">
-          <p>曾任某外企信息技术公司 AI 产品经理 / FDE工程师。具有 20 余年企业经营管理、财务数字化及信息化建设经验，兼具甲方财务管理、ERP 项目实施、数字化咨询、产品规划与项目管理背景。</p>
-          <p>近年重点聚焦企业级 AI 产品规划与甲方 AI 项目落地，围绕 AI 财务、经营分析、企业知识库、流程智能化及经营驾驶舱等方向，开展业务调研、场景识别与优先级管理、产品蓝图规划、MVP 设计，以及 Agent 业务闭环的验证迭代。</p>
-          <p>长期从事集团财务管控、业财融合、财务共享、经营分析、流程优化及大型 ERP 项目规划；将制度、流程、经营指标、数据资源和专家经验，转化为可验证、可集成、可运营的 AI 产品能力，并关注人机协同、权限控制、异常升级与持续治理。</p>
+      </section>
+
+      <section class="section projects" id="projects" aria-labelledby="projects-title">
+        <div class="section-intro wide">
+          <p class="eyebrow">SELECTED WORK</p>
+          <h2 id="projects-title">从业务问题，<br />到可验证的交付。</h2>
+          <p>以下内容均为匿名化案例或 POC 方案；不展示客户名称、业务数据、交付文件和系统细节。</p>
         </div>
-        <div class="profile-context" aria-label="职业背景概览">
-          <article><p>职业经历</p><ul><li>百事可乐</li><li>福喜食品 / OSI Group</li><li>金蝶</li><li>信华信</li><li>北京合思</li><li>用友网络</li></ul></article>
-          <article><p>核心企业平台</p><ul><li>SAP</li><li>Oracle</li><li>金蝶</li><li>用友</li></ul></article>
-          <article><p>业务与管理系统</p><ul><li>房地产业务</li><li>项目管理</li><li>费控管理</li><li>PLM</li><li>CRM</li><li>SRM</li><li>MES</li><li>OA</li><li>电子档案</li><li>资金管理</li><li>预算管理</li></ul></article>
-          <article><p>数字化商业</p><ul><li>O2O</li><li>B2B</li><li>B2C</li><li>C2B</li></ul></article>
-          <article><p>服务企业类型</p><ul><li>国央企集团</li><li>综合集团</li><li>世界 500 强企业</li></ul></article>
-          <article><p>行业实践</p><ul><li>制造</li><li>跨境电商</li><li>商业 / 地产</li><li>能源 / 零售 / 食品</li></ul></article>
+        <div class="project-filters" aria-label="按能力筛选案例">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter-button" type="button" data-filter="strategy" aria-pressed="false">AI Strategy</button><button class="filter-button" type="button" data-filter="fde" aria-pressed="false">FDE</button><button class="filter-button" type="button" data-filter="agent" aria-pressed="false">AI Agent</button><button class="filter-button" type="button" data-filter="finance" aria-pressed="false">ERP / Finance</button><button class="filter-button" type="button" data-filter="ontology" aria-pressed="false">MCP / RAG / Ontology</button>
+        </div>
+        <div class="project-stack">
+          <article class="project-card featured" data-tags="agent,fde,finance,strategy,ontology"><figure class="project-preview"><img src="assets/cases/portal-public-preview-v1.png" width="1280" height="530" loading="lazy" alt="公开现金流工作台，使用独立合成数据" /><figcaption>公开工作台实截 · 合成数据，非客户系统</figcaption></figure><div class="project-meta"><span>交互原型 · 公开网页演示</span><span>FDE / Product / Governance</span></div><h3>企业 AI 场景门户</h3><p>业务问题：额外费用变化会怎样影响未来现金余额？</p><p><b>我的贡献：</b>场景与产品规划、FDE 工作流、工具契约、人机协同与证据治理。</p><p>可体验：调整参数、比较方案、查看算术核验与治理关系。不连接账户或模型，不执行付款。</p><div class="project-actions"><a class="case-link" href="cases/enterprise-ai-scenario-portal.html">阅读案例 ↗</a><a class="case-link" href="cases/enterprise-ai-scenario-portal.html#product-preview">体验演示 →</a></div></article>
+          <article class="project-card featured" data-tags="agent,fde,finance">
+            <figure class="project-preview"><img src="assets/cases/cfo-demo-v1.png" width="1280" height="779" loading="lazy" alt="财务风险中心模拟界面，不代表实际运行输出" /><figcaption>模拟界面重组图 · 非真实运行结果</figcaption></figure>
+            <div class="project-meta"><span>POC 验证</span><span>跨境电商 / 财务</span></div>
+            <h3>AI 财务风险预测 Agent</h3>
+            <p>围绕现金流、利润与风险情景，构建可追溯、只分析不执行的 CFO 决策支持闭环。</p>
+            <ul><li>确定性事实与参数化模型负责数字</li><li>自然语言用于提问、解释和建议</li><li>每项结论保留数据来源与人工处置边界</li></ul>
+            <p><b>能力证据：</b>查看风险中心、证据链与人工复核的模拟界面；不将网页上线等同于企业生产上线。</p>
+            <div class="project-actions"><a class="case-link" href="cases/ai-finance-risk-agent.html">阅读案例 ↗</a><a class="case-link" href="cases/ai-finance-risk-agent.html#product-preview">查看产品预览 →</a></div>
+          </article>
+          <article class="project-card" data-tags="agent,strategy,finance">
+            <div class="project-meta"><span>产品方案</span><span>供应链 / 预测</span></div>
+            <h3>销量预测与补货协同 Agent</h3>
+            <p>将预测、规划、计算、校验与叙述分层，支持面向业务人员的受控分析与建议生成。</p>
+            <a class="case-link" href="cases/sales-forecast-replenishment-agent.html">查看匿名案例 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card" data-tags="ontology,strategy,fde">
+            <div class="project-meta"><span>方法框架</span><span>知识 / 数据</span></div>
+            <h3>企业知识与业务语义中台</h3>
+            <p>将制度、流程与业务对象连接为可治理的知识与语义层，明确 RAG、结构化事实和权限边界。</p>
+            <a class="case-link" href="cases/knowledge-semantic-platform.html">查看匿名案例 <span aria-hidden="true">↗</span></a>
+          </article>
         </div>
       </section>
 
@@ -107,39 +125,6 @@
         </div>
       </section>
 
-      <section class="section projects" id="projects" aria-labelledby="projects-title">
-        <div class="section-intro wide">
-          <p class="eyebrow">SELECTED WORK</p>
-          <h2 id="projects-title">从业务问题，<br />到可验证的交付。</h2>
-          <p>以下内容均为匿名化案例或 POC 方案；不展示客户名称、业务数据、交付文件和系统细节。</p>
-        </div>
-        <div class="project-filters" aria-label="按能力筛选案例">
-          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">全部</button><button class="filter-button" type="button" data-filter="strategy" aria-pressed="false">AI Strategy</button><button class="filter-button" type="button" data-filter="fde" aria-pressed="false">FDE</button><button class="filter-button" type="button" data-filter="agent" aria-pressed="false">AI Agent</button><button class="filter-button" type="button" data-filter="finance" aria-pressed="false">ERP / Finance</button><button class="filter-button" type="button" data-filter="ontology" aria-pressed="false">MCP / RAG / Ontology</button>
-        </div>
-        <div class="project-stack">
-          <article class="project-card featured" data-tags="agent,fde,finance,strategy,ontology"><div class="project-meta"><span>网页适配演示 · 合成数据</span><span>FDE / Product / Governance</span></div><h3>企业 AI 场景门户</h3><p>从业务拆分、现金流方案比较，到证据关系与人工复核，体验完整产品流程。</p><a class="case-link" href="cases/enterprise-ai-scenario-portal.html">查看旗舰案例与交互演示 ↗</a></article>
-          <article class="project-card featured" data-tags="agent,fde,finance">
-            <div class="project-meta"><span>POC 验证</span><span>跨境电商 / 财务</span></div>
-            <h3>AI 财务风险预测 Agent</h3>
-            <p>围绕现金流、利润与风险情景，构建可追溯、只分析不执行的 CFO 决策支持闭环。</p>
-            <ul><li>确定性事实与参数化模型负责数字</li><li>自然语言用于提问、解释和建议</li><li>每项结论保留数据来源与人工处置边界</li></ul>
-            <a class="case-link" href="cases/ai-finance-risk-agent.html">查看匿名案例 <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card" data-tags="agent,strategy,finance">
-            <div class="project-meta"><span>产品方案</span><span>供应链 / 预测</span></div>
-            <h3>销量预测与补货协同 Agent</h3>
-            <p>将预测、规划、计算、校验与叙述分层，支持面向业务人员的受控分析与建议生成。</p>
-            <a class="case-link" href="cases/sales-forecast-replenishment-agent.html">查看匿名案例 <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card" data-tags="ontology,strategy,fde">
-            <div class="project-meta"><span>方法框架</span><span>知识 / 数据</span></div>
-            <h3>企业知识与业务语义中台</h3>
-            <p>将制度、流程与业务对象连接为可治理的知识与语义层，明确 RAG、结构化事实和权限边界。</p>
-            <a class="case-link" href="cases/knowledge-semantic-platform.html">查看匿名案例 <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-      </section>
-
       <section class="method" id="method" aria-labelledby="method-title">
         <div>
           <p class="eyebrow">HOW I WORK</p>
@@ -154,11 +139,24 @@
         </ol>
       </section>
 
-      <section class="section insights" id="insights" aria-labelledby="insights-title">
-        <div class="section-intro wide"><p class="eyebrow">TEACHING & INSIGHTS</p><h2 id="insights-title">把复杂的 AI，讲成可行动的业务语言。</h2></div>
-        <div class="insight-layout">
-          <div class="teaching"><p>企业 AI 与数字化转型实战讲师</p><h3>业务问题 → 数字化方法 → AI 能力 → 实践落地</h3><span>可面向企业管理层、业务与数字化团队，开展企业 AI、Agent、财务智能化、ERP 与项目管理主题分享。</span></div>
-          <div class="channels"><p>持续内容分享</p><div class="channel-card"><img src="assets/channels/image1.png" alt="抖音账号 嚣张九天 的二维码" /><div><strong>抖音</strong><span>@嚣张九天 · 175097118</span></div></div><div class="channel-card"><img src="assets/channels/image2.png" alt="视频号 布儒嗣 的二维码" /><div><strong>视频号</strong><span>布儒嗣</span></div></div><a class="featured-video" href="https://www.bilibili.com/video/BV1Lt421V7Rb/" target="_blank" rel="noreferrer"><span>公开视频示例</span><strong>AI / Sora 生成视频实践</strong><i aria-hidden="true">↗</i></a><small>扫码查看 AI、数字化与 AI Agent 相关实践内容。</small></div>
+      <section class="section profile" id="profile" aria-labelledby="profile-title">
+        <div class="section-intro profile-intro">
+          <div><p class="eyebrow">PROFILE</p><h2 id="profile-title">把企业经验，<br />转化为可运营的 AI 能力。</h2></div>
+          <p>企业 AI 产品经理 / FDE，连接管理层、业务团队与技术团队，让 AI 从场景判断走向受控交付。</p>
+        </div>
+
+        <div class="profile-story">
+          <p>曾任某外企信息技术公司 AI 产品经理 / FDE工程师。具有 20 余年企业经营管理、财务数字化及信息化建设经验，兼具甲方财务管理、ERP 项目实施、数字化咨询、产品规划与项目管理背景。</p>
+          <p>近年重点聚焦企业级 AI 产品规划与甲方 AI 项目落地，围绕 AI 财务、经营分析、企业知识库、流程智能化及经营驾驶舱等方向，开展业务调研、场景识别与优先级管理、产品蓝图规划、MVP 设计，以及 Agent 业务闭环的验证迭代。</p>
+          <p>长期从事集团财务管控、业财融合、财务共享、经营分析、流程优化及大型 ERP 项目规划；将制度、流程、经营指标、数据资源和专家经验，转化为可验证、可集成、可运营的 AI 产品能力，并关注人机协同、权限控制、异常升级与持续治理。</p>
+        </div>
+        <div class="profile-context" aria-label="职业背景概览">
+          <article><p>职业经历</p><ul><li>百事可乐</li><li>福喜食品 / OSI Group</li><li>金蝶</li><li>信华信</li><li>北京合思</li><li>用友网络</li></ul></article>
+          <article><p>核心企业平台</p><ul><li>SAP</li><li>Oracle</li><li>金蝶</li><li>用友</li></ul></article>
+          <article><p>业务与管理系统</p><ul><li>房地产业务</li><li>项目管理</li><li>费控管理</li><li>PLM</li><li>CRM</li><li>SRM</li><li>MES</li><li>OA</li><li>电子档案</li><li>资金管理</li><li>预算管理</li></ul></article>
+          <article><p>数字化商业</p><ul><li>O2O</li><li>B2B</li><li>B2C</li><li>C2B</li></ul></article>
+          <article><p>服务企业类型</p><ul><li>国央企集团</li><li>综合集团</li><li>世界 500 强企业</li></ul></article>
+          <article><p>行业实践</p><ul><li>制造</li><li>跨境电商</li><li>商业 / 地产</li><li>能源 / 零售 / 食品</li></ul></article>
         </div>
       </section>
 
@@ -168,6 +166,14 @@
           <article><span>相关经历</span><h3>企业 AI 产品经理 / FDE</h3><p>企业 AI 产品规划、现场场景共创、Agent 闭环设计、POC 与运营治理。</p></article>
           <article><span>近年</span><h3>企业 AI 与数字化转型顾问</h3><p>AI 经营分析、知识中台、财务智能化、业务流程与组织协同规划。</p></article>
           <article><span>长期积累</span><h3>ERP、财务与数字化咨询</h3><p>大型集团财务管控、财务共享、业财融合、经营分析与复杂项目交付。</p></article>
+        </div>
+      </section>
+
+      <section class="section insights" id="insights" aria-labelledby="insights-title">
+        <div class="section-intro wide"><p class="eyebrow">TEACHING & INSIGHTS</p><h2 id="insights-title">把复杂的 AI，讲成可行动的业务语言。</h2></div>
+        <div class="insight-layout">
+          <div class="teaching"><p>企业 AI 与数字化转型实战讲师</p><h3>业务问题 → 数字化方法 → AI 能力 → 实践落地</h3><span>可面向企业管理层、业务与数字化团队，开展企业 AI、Agent、财务智能化、ERP 与项目管理主题分享。</span></div>
+          <div class="channels"><p>持续内容分享</p><div class="channel-card"><img src="assets/channels/image1.png" alt="抖音账号 嚣张九天 的二维码" /><div><strong>抖音</strong><span>@嚣张九天 · 175097118</span></div></div><div class="channel-card"><img src="assets/channels/image2.png" alt="视频号 布儒嗣 的二维码" /><div><strong>视频号</strong><span>布儒嗣</span></div></div><a class="featured-video" href="https://www.bilibili.com/video/BV1Lt421V7Rb/" target="_blank" rel="noreferrer"><span>公开视频示例</span><strong>AI / Sora 生成视频实践</strong><i aria-hidden="true">↗</i></a><small>扫码查看 AI、数字化与 AI Agent 相关实践内容。</small></div>
         </div>
       </section>
 
